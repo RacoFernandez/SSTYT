@@ -35,6 +35,8 @@ $BODY$
      OR datediff('minute', COALESCE(fechatrxhist,'19000101'), fechatrx1) < 2
 
      -- Pagos seguidos con la misma tarjeta
+     -- Se definen las ventanas de tiempo para considerar cuando hay una nueva etapa de un mismo viaje. Estas ventanas son distintas para cada modo de transporte.     
+     -- Si te tomaste 2 veces seguida el mismo colectivo, subte o tren no se considera transbordo (es otro viaje)
      OR NOT
      (
      (COALESCE(modohist1,'') = 'TREN' AND 
